@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
+import { ConvexClientProvider } from "./providers/ConvexClientProvider";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'})
 
@@ -32,7 +33,9 @@ export default function RootLayout({
       className={cn("antialiased", fontMono.variable, "font-sans", geist.variable)}
     >
       <body className="bg-black-1">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ConvexClientProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </ConvexClientProvider>
       </body>
     </html>
   )
